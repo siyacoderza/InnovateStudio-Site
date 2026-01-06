@@ -11,7 +11,7 @@ function Footer() {
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
           <span className="font-display font-bold text-xl tracking-wide">
-            INNOVATE<span className="text-accent">.</span>
+            InnovateStudio<span className="text-accent">.</span>
           </span>
           <p className="text-white/50 text-sm mt-2">
             © {new Date().getFullYear()} Innovation Strategy Group. All rights reserved.
