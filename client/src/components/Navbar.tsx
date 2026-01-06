@@ -48,7 +48,7 @@ export function Navbar() {
             "font-display font-bold text-xl tracking-wide",
             isScrolled || isMobileMenuOpen ? "text-primary" : "text-white"
           )}>
-            CONSULT<span className="text-accent">.</span>
+            INNOVATE<span className="text-accent">.</span>
           </span>
         </Link>
 
