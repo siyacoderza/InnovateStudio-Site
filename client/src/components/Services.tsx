@@ -27,11 +27,6 @@ const services = [
     title: "Tech Integration",
     description: "Seamlessly incorporate IoT and smart technologies into traditional manufacturing products to increase value.",
   },
-  {
-    icon: Workflow,
-    title: "Process Optimization",
-    description: "Streamline development lifecycles to reduce time-to-market without compromising on quality or compliance.",
-  },
 ];
 
 export function Services() {
