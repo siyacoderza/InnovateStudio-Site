@@ -57,7 +57,7 @@ export default function Home() {
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.1] mb-6">
                 Transforming <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Manufacturing</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Products</span>
                 <br /> through Innovation
               </h1>
               <p className="text-xl text-white/70 mb-8 max-w-lg leading-relaxed">
