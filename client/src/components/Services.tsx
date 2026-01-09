@@ -25,7 +25,7 @@ const services = [
   {
     icon: Cpu,
     title: "Tech Integration",
-    description: "Seamlessly incorporate IoT and smart technologies into traditional manufacturing products to increase value.",
+    description: "Seamlessly incorporate latest technological trends, our innovative solutions and smart technologies into traditional manufacturing products to increase value.",
   },
 ];
 
