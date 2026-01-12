@@ -52,8 +52,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Email</h3>
-                  <a href="mailto:contact@consultant.com" className="text-white/70 hover:text-white transition-colors">
-                    hello@consultation.com
+                  <a href="mailto:contact@innovationstrategy.com" className="text-white/70 hover:text-white transition-colors">
+                    contact@innovationstrategy.com
                   </a>
                 </div>
               </div>
@@ -64,7 +64,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                  <span className="text-white/70">+1 (555) 123-4567</span>
+                  <span className="text-white/70">+1 (800) 555-0199</span>
                 </div>
               </div>
 
@@ -75,8 +75,8 @@ export function Contact() {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Office</h3>
                   <span className="text-white/70">
-                    123 Innovation Dr, Suite 400<br />
-                    San Francisco, CA 94107
+                    Innovation Plaza, Tech District<br />
+                    New York, NY 10001
                   </span>
                 </div>
               </div>

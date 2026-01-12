@@ -11,10 +11,10 @@ function Footer() {
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
           <span className="font-display font-bold text-xl tracking-wide">
-            CONSULT<span className="text-accent">.</span>
+            InnovateStudio<span className="text-accent">.</span>
           </span>
           <p className="text-white/50 text-sm mt-2">
-            © {new Date().getFullYear()} Consulting Services. All rights reserved.
+            © {new Date().getFullYear()} Innovation Strategy Group. All rights reserved.
           </p>
         </div>
         <div className="flex gap-8 text-sm text-white/70">
@@ -57,7 +57,7 @@ export default function Home() {
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.1] mb-6">
                 Transforming <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Manufacturing</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">Products</span>
                 <br /> through Innovation
               </h1>
               <p className="text-xl text-white/70 mb-8 max-w-lg leading-relaxed">

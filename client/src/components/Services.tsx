@@ -25,12 +25,7 @@ const services = [
   {
     icon: Cpu,
     title: "Tech Integration",
-    description: "Seamlessly incorporate IoT and smart technologies into traditional manufacturing products to increase value.",
-  },
-  {
-    icon: Workflow,
-    title: "Process Optimization",
-    description: "Streamline development lifecycles to reduce time-to-market without compromising on quality or compliance.",
+    description: "Seamlessly incorporate latest technological trends, our innovative solutions and smart technologies into traditional manufacturing products to increase value.",
   },
 ];
 
