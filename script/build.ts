@@ -1,67 +1,65 @@
-import { build as esbuild } from "esbuild";
-import { build as viteBuild } from "vite";
-import { rm, readFile } from "fs/promises";
+import { spawn } from "child_process";
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
 
-// server deps to bundle to reduce openat(2) syscalls
-// which helps cold start times
-const allowlist = [
-  "@google/generative-ai",
-  "axios",
-  "connect-pg-simple",
-  "cors",
-  "date-fns",
-  "drizzle-orm",
-  "drizzle-zod",
-  "express",
-  "express-rate-limit",
-  "express-session",
-  "jsonwebtoken",
-  "memorystore",
-  "multer",
-  "nanoid",
-  "nodemailer",
-  "openai",
-  "passport",
-  "passport-local",
-  "pg",
-  "stripe",
-  "uuid",
-  "ws",
-  "xlsx",
-  "zod",
-  "zod-validation-error",
-];
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const rootDir = path.resolve(__dirname, "..");
 
-async function buildAll() {
-  await rm("dist", { recursive: true, force: true });
+async function runCommand(
+  command: string,
+  args: string[],
+  cwd: string = rootDir,
+): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    console.log(`\n📦 Running: ${command} ${args.join(" ")}`);
+    const proc = spawn(command, args, {
+      cwd,
+      stdio: "inherit",
+      shell: true,
+    });
 
-  console.log("building client...");
-  await viteBuild();
+    proc.on("close", (code) => {
+      if (code !== 0) {
+        reject(new Error(`Command failed with code ${code}: ${command}`));
+      } else {
+        resolve();
+      }
+    });
 
-  console.log("building server...");
-  const pkg = JSON.parse(await readFile("package.json", "utf-8"));
-  const allDeps = [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.devDependencies || {}),
-  ];
-  const externals = allDeps.filter((dep) => !allowlist.includes(dep));
-
-  await esbuild({
-    entryPoints: ["server/index.ts"],
-    platform: "node",
-    bundle: true,
-    format: "cjs",
-    outfile: "dist/index.cjs",
-    define: {
-      "process.env.NODE_ENV": '"production"',
-    },
-    minify: true,
-    external: externals,
-    logLevel: "info",
+    proc.on("error", (err) => {
+      reject(err);
+    });
   });
 }
 
-buildAll().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+async function build(): Promise<void> {
+  try {
+    console.log("🚀 Starting build process...\n");
+
+    // Type check
+    console.log("✓ Running TypeScript type check...");
+    await runCommand("npx", ["tsc", "--noEmit"], rootDir);
+
+    // Build client with Vite
+    console.log("✓ Building client with Vite...");
+    await runCommand("npx", ["vite", "build"], rootDir);
+
+    // Ensure dist/public directory exists
+    const distDir = path.resolve(rootDir, "dist");
+    const publicDir = path.resolve(distDir, "public");
+
+    if (!fs.existsSync(publicDir)) {
+      console.log(`✓ Creating dist/public directory...`);
+      fs.mkdirSync(publicDir, { recursive: true });
+    }
+
+    console.log("\n✅ Build completed successfully!");
+    console.log(`📁 Output directory: ${publicDir}`);
+  } catch (error) {
+    console.error("\n❌ Build failed:", error);
+    process.exit(1);
+  }
+}
+
+build();
